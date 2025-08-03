@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://rlohni74tnn5"]
+[gd_scene load_steps=10 format=3 uid="uid://rlohni74tnn5"]
 
 [ext_resource type="Script" uid="uid://bec3ujqf3gbw0" path="res://Scripts/ui.gd" id="1_q0uhn"]
 [ext_resource type="FontFile" uid="uid://bku1m2d5f0ncj" path="res://Assets/Font/Pixellari.ttf" id="2_e707p"]
 [ext_resource type="Texture2D" uid="uid://jl4kslybwtpx" path="res://Assets/Complete_UI_Essential_Pack_Free/01_Flat_Theme/Sprites/UI_Flat_Button01a_1.png" id="2_f1fl4"]
 [ext_resource type="Texture2D" uid="uid://btc2d7pvaiu0u" path="res://Assets/Complete_UI_Essential_Pack_Free/01_Flat_Theme/Sprites/UI_Flat_Bar13a.png" id="4_jqf55"]
 [ext_resource type="Texture2D" uid="uid://baxkrxoh35cxi" path="res://Assets/Complete_UI_Essential_Pack_Free/01_Flat_Theme/Sprites/UI_Flat_Bar07a.png" id="5_f1fl4"]
+[ext_resource type="Texture2D" uid="uid://bwts30q76ga5k" path="res://Assets/UI Bundle/UI Bundle/CyberTheme.png" id="6_jqf55"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_pa3ot"]
 font = ExtResource("2_e707p")
@@ -19,11 +20,15 @@ font_color = Color(1, 0.878431, 0.729412, 1)
 outline_size = 2
 outline_color = Color(0, 0, 0, 1)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_byuxr"]
+atlas = ExtResource("6_jqf55")
+region = Rect2(1, 4, 77, 25)
+
 [node name="Ui" type="CanvasLayer"]
 script = ExtResource("1_q0uhn")
 
 [node name="UiFlatButton01a1" type="Sprite2D" parent="."]
-position = Vector2(167, 253.125)
+position = Vector2(-184.75, 212.125)
 scale = Vector2(7.51562, 5.44531)
 texture = ExtResource("2_f1fl4")
 
@@ -34,10 +39,10 @@ anchor_left = -0.002
 anchor_top = 0.243
 anchor_right = 0.0446667
 anchor_bottom = 0.281375
-offset_left = 79.0
-offset_top = 8.60001
-offset_right = 185.0
-offset_bottom = 17.8999
+offset_left = -272.75
+offset_top = -32.4
+offset_right = -166.75
+offset_bottom = -23.1001
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 0
@@ -52,7 +57,7 @@ anchors_preset = -1
 anchor_left = 0.767045
 anchor_top = 0.00999997
 anchor_right = 0.767045
-anchor_bottom = 0.177503
+anchor_bottom = -0.322498
 offset_left = 79.0
 offset_top = 9.60001
 offset_right = 185.0
@@ -71,10 +76,10 @@ anchor_left = -0.002
 anchor_top = 0.243
 anchor_right = 0.0173333
 anchor_bottom = 0.281143
-offset_left = 82.0
-offset_top = 45.6
-offset_right = 303.0
-offset_bottom = 68.9
+offset_left = -269.75
+offset_top = 4.59998
+offset_right = -48.7501
+offset_bottom = 27.9
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 0
@@ -89,10 +94,10 @@ anchor_left = -0.002
 anchor_top = 0.243
 anchor_right = -0.000666667
 anchor_bottom = 0.281143
-offset_left = 82.0
-offset_top = 87.6
-offset_right = 303.0
-offset_bottom = 110.9
+offset_left = -269.75
+offset_top = 46.6
+offset_right = -48.7501
+offset_bottom = 69.9
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 0
@@ -101,13 +106,20 @@ label_settings = SubResource("LabelSettings_pa3ot")
 metadata/_edit_use_anchors_ = true
 
 [node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(221, 394)
+position = Vector2(-130.75, 353)
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="."]
-offset_left = 70.0
-offset_top = 372.0
-offset_right = 102.0
-offset_bottom = 384.0
+offset_left = -297.0
+offset_top = 363.0
+offset_right = -265.0
+offset_bottom = 375.0
 scale = Vector2(5.8, 4.68)
 texture_over = ExtResource("4_jqf55")
 texture_progress = ExtResource("5_f1fl4")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = 50.0
+offset_top = 72.0
+offset_right = 556.0
+offset_bottom = 216.0
+texture = SubResource("AtlasTexture_byuxr")

@@ -1,6 +1,11 @@
 extends Control
 
+@onready var map_preview = $MapPreview
+@onready var preview_texture_rect = $TextureRect
+
 func _ready() -> void:
+	var viewport_texture = map_preview.sub_viewport.get_texture()
+	preview_texture_rect.texture = viewport_texture
 	var tween = create_tween()
 	tween.tween_property($ColorRect2/Label, "modulate:a", 1.0, 2.5).set_ease(Tween.EASE_IN)
 	tween.tween_property($ColorRect2/Label, "modulate:a", 0.0, 2.5).set_ease(Tween.EASE_IN)

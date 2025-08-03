@@ -1,22 +1,52 @@
-[gd_scene load_steps=12 format=3 uid="uid://wsaav34en06a"]
+[gd_scene load_steps=24 format=3 uid="uid://wsaav34en06a"]
 
 [ext_resource type="Script" uid="uid://chcox4t4rcap2" path="res://Scripts/menu.gd" id="1_fapvr"]
+[ext_resource type="Texture2D" uid="uid://cxycjqdpbakp1" path="res://Assets/menu_asset/bot_jogar.png" id="2_eheat"]
 [ext_resource type="AudioStream" uid="uid://bx76mvnpdgbqm" path="res://Sounds/8-bit-console-from-my-childhood-301286.mp3" id="2_kdsmm"]
-[ext_resource type="Texture2D" uid="uid://bwts30q76ga5k" path="res://Assets/UI Bundle/UI Bundle/CyberTheme.png" id="3_8lfl8"]
+[ext_resource type="Texture2D" uid="uid://bhkxcsbodbo5r" path="res://Assets/menu_asset/bot_sair.png" id="3_fapvr"]
+[ext_resource type="Texture2D" uid="uid://dc550qjarwy37" path="res://Assets/Menu/bot_jogar.png" id="4_1evsv"]
+[ext_resource type="Texture2D" uid="uid://di2dus73k415l" path="res://Assets/menu_asset/bot_opcoes.png" id="4_kdsmm"]
 [ext_resource type="FontFile" uid="uid://bku1m2d5f0ncj" path="res://Assets/Font/Pixellari.ttf" id="6_kdsmm"]
+[ext_resource type="Script" uid="uid://rugkj0xxq0uk" path="res://Cenas/map_preview.gd" id="6_plcv4"]
+[ext_resource type="Texture2D" uid="uid://dcs05u5125yp5" path="res://Assets/Menu/bot_opcoes.png" id="7_2sm5j"]
 [ext_resource type="Texture2D" uid="uid://drm6a2ofwgqhd" path="res://Assets/Logo/logo-bytebash.png" id="7_8lfl8"]
+[ext_resource type="PackedScene" uid="uid://x55arxip1ly0" path="res://Cenas/Camera_menu.tscn" id="7_plcv4"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_plcv4"]
-atlas = ExtResource("3_8lfl8")
-region = Rect2(126, 195, 54, 17)
+[sub_resource type="AtlasTexture" id="AtlasTexture_8aipq"]
+atlas = ExtResource("2_eheat")
+region = Rect2(9, 2, 54, 17)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fapvr"]
-atlas = ExtResource("3_8lfl8")
-region = Rect2(126, 235, 54, 17)
+[sub_resource type="AtlasTexture" id="AtlasTexture_1evsv"]
+atlas = ExtResource("2_eheat")
+region = Rect2(219, 2, 54, 17)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_kdsmm"]
-atlas = ExtResource("3_8lfl8")
-region = Rect2(126, 215, 54, 17)
+[sub_resource type="AtlasTexture" id="AtlasTexture_2sm5j"]
+atlas = ExtResource("4_1evsv")
+region = Rect2(79, 2, 54, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bpp88"]
+atlas = ExtResource("3_fapvr")
+region = Rect2(9, 2, 54, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ctkf8"]
+atlas = ExtResource("3_fapvr")
+region = Rect2(219, 2, 54, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bro6f"]
+atlas = ExtResource("3_fapvr")
+region = Rect2(77, 2, 54, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mbksb"]
+atlas = ExtResource("4_kdsmm")
+region = Rect2(9, 2, 54, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8rl8v"]
+atlas = ExtResource("4_kdsmm")
+region = Rect2(219, 2, 54, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dodec"]
+atlas = ExtResource("7_2sm5j")
+region = Rect2(79, 2, 54, 17)
 
 [sub_resource type="LabelSettings" id="LabelSettings_8lfl8"]
 font = ExtResource("6_kdsmm")
@@ -40,58 +70,56 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_fapvr")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 0
-offset_left = -8.0
-offset_right = 1499.0
-offset_bottom = 831.0
-color = Color(0.247059, 0.0745098, 0.827451, 0.305882)
-
-[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(-1, 0)
 stream = ExtResource("2_kdsmm")
 
 [node name="BotPlay" type="TextureButton" parent="."]
+z_index = 1
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -340.0
-offset_top = 45.0
-offset_right = -286.0
-offset_bottom = 62.0
+anchors_preset = -1
+anchor_left = 0.306
+anchor_top = 0.747
+anchor_right = 0.306
+anchor_bottom = 0.747
+offset_left = -163.46
+offset_top = -103.2
+offset_right = -109.46
+offset_bottom = -86.2
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(6.065, 6.065)
-texture_normal = SubResource("AtlasTexture_plcv4")
+texture_normal = SubResource("AtlasTexture_8aipq")
+texture_pressed = SubResource("AtlasTexture_1evsv")
+texture_hover = SubResource("AtlasTexture_2sm5j")
 
 [node name="BotExit" type="TextureButton" parent="."]
+z_index = 1
 layout_mode = 0
 offset_left = 154.0
 offset_top = 600.0
 offset_right = 208.0
 offset_bottom = 617.0
 scale = Vector2(4.41, 4.41)
-texture_normal = SubResource("AtlasTexture_fapvr")
+texture_normal = SubResource("AtlasTexture_bpp88")
+texture_pressed = SubResource("AtlasTexture_ctkf8")
+texture_hover = SubResource("AtlasTexture_bro6f")
 
 [node name="BotOpcoes" type="TextureButton" parent="."]
+z_index = 1
 layout_mode = 0
 offset_left = 153.0
 offset_top = 495.0
 offset_right = 207.0
 offset_bottom = 512.0
 scale = Vector2(4.41, 4.41)
-texture_normal = SubResource("AtlasTexture_kdsmm")
+texture_normal = SubResource("AtlasTexture_mbksb")
+texture_pressed = SubResource("AtlasTexture_8rl8v")
+texture_hover = SubResource("AtlasTexture_dodec")
 
 [node name="Logo-bytebash" type="Sprite2D" parent="."]
-position = Vector2(475, 211)
+z_index = 1
+position = Vector2(434, 177)
 scale = Vector2(5.38889, 5.38889)
 texture = ExtResource("7_8lfl8")
 
@@ -102,7 +130,7 @@ scale = Vector2(0.969897, 0.74433)
 texture = ExtResource("7_8lfl8")
 
 [node name="ColorRect2" type="ColorRect" parent="."]
-visible = false
+z_index = 2
 layout_mode = 0
 offset_left = -19.0
 offset_top = -4.0
@@ -169,6 +197,54 @@ text = "Não use o google para as respostas por favor :)"
 label_settings = SubResource("LabelSettings_plcv4")
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
+
+[node name="MapPreview" type="Control" parent="."]
+anchors_preset = 0
+anchor_left = 0.604396
+anchor_top = 0.00166667
+anchor_right = 1.64066
+anchor_bottom = 1.335
+script = ExtResource("6_plcv4")
+metadata/_edit_use_anchors_ = true
+
+[node name="SubViewport" type="SubViewport" parent="MapPreview"]
+canvas_item_default_texture_filter = 0
+size = Vector2i(772, 677)
+size_2d_override_stretch = true
+
+[node name="Camera2D" type="Camera2D" parent="MapPreview/SubViewport"]
+
+[node name="Mundo" parent="MapPreview/SubViewport" instance=ExtResource("7_plcv4")]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = -1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.604396
+anchor_top = -0.00333333
+anchor_right = 1.64396
+anchor_bottom = 1.34167
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 1458.0
+offset_top = -29.0
+offset_right = 2263.0
+offset_bottom = 827.0
+rotation = 0.141372
+color = Color(0.423529, 0.435294, 0.996078, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="."]
+z_as_relative = false
+layout_mode = 0
+offset_left = -41.0
+offset_top = -181.0
+offset_right = 764.0
+offset_bottom = 779.0
+rotation = 0.141372
+mouse_filter = 2
+color = Color(0.423529, 0.435294, 0.996078, 1)
 
 [connection signal="pressed" from="BotPlay" to="." method="_on_bot_play_pressed"]
 [connection signal="pressed" from="BotExit" to="." method="_on_bot_exit_pressed"]

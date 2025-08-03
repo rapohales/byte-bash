@@ -7,6 +7,7 @@ extends Area2D
 var open: bool = true
 
 func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	EventBus.event_triggered.connect(_on_event)
 
 func _on_event(event_name: String, _data: Variant):

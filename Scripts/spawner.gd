@@ -48,20 +48,16 @@ func load_default_enemies():
 func spawn_random_enemy():
 	var selected_scene = enemy_scenes[randi() % enemy_scenes.size()]
 	var new_enemy = selected_scene.instantiate()
-	
-	var main_node = get_tree().root.get_node("Mundo")  # Ajuste o caminho conforme sua estrutura
+	var main_node = get_tree().root.get_node("Mundo")  
 	main_node.add_child(new_enemy)
-	# Posiciona o inimigo
 	var spawn_pos = global_position
 	if spawn_radius > 0:
 		var angle = randf() * TAU
 		spawn_pos += Vector2(cos(angle), sin(angle)) * randf() * spawn_radius
-	
+		new_enemy.global_position = spawn_pos
+		# Configura a barra de vida do inimigo
+		setup_enemy_healthbar(new_enemy)
 
-	new_enemy.global_position = spawn_pos
-	# Configura a barra de vida do inimigo
-	setup_enemy_healthbar(new_enemy)
-	
 
 func setup_enemy_healthbar(enemy):
 	if enemy.has_node("HealthBar"):
