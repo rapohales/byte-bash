@@ -11,8 +11,8 @@ func _input(event: InputEvent) -> void:
 			can_interact = false
 			interact_label.hide()
 			await current_interations[0].interact.call()
-			EventBus.emitir_ui("emitir_ui", current_interations[0].get_parent().name) 
-			can_interact  = true
+			EventBus.emitir_ui("emitir_ui", current_interations[0].get_parent().name)
+			can_interact = true
 func _process(_delta: float) -> void:
 	if current_interations and can_interact:
 		current_interations.sort_custom(_sort_by_nearest)

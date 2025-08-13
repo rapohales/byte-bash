@@ -1,5 +1,4 @@
 extends Node2D
-
 var bar_red = preload("res://Assets/Vida_bar/healthbar4.png")
 var bar_blue = preload("res://Assets/Vida_bar/healthbar1.png")
 var bar_yellow = preload("res://Assets/Vida_bar/healthbar2.png")
@@ -9,7 +8,7 @@ var bar_yellow = preload("res://Assets/Vida_bar/healthbar2.png")
 func _ready():
 	if get_parent() and get_parent().get("max_health"):
 		healthbar.max_value = get_parent().max_health
-
+		
 func update_healthbar(value):
 	var tween = create_tween()
 	tween.tween_property(healthbar, "value", value, 0.1)

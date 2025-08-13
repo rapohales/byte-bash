@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dtojeevfx25hd"]
 
-[ext_resource type="Script" uid="uid://dffn0b8jjcd12" path="res://Cenas/efeito.gd" id="1_fw8m5"]
+[ext_resource type="Script" uid="uid://dffn0b8jjcd12" path="res://Scripts/efeito.gd" id="1_fw8m5"]
 [ext_resource type="FontFile" uid="uid://bku1m2d5f0ncj" path="res://Assets/Font/Pixellari.ttf" id="2_v8jrw"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_2pyfd"]

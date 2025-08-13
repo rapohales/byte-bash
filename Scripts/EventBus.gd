@@ -16,7 +16,6 @@ signal loja_ui
 func _atualizar_ui_reset_progressbar(cur_xp, next_level):
 	atualizar_ui_reset_progressbar.emit(cur_xp, next_level)
 
-
 func _atualizar_ui_progressbar(cur_xp, cur_lvl, next_level):
 	atualizar_ui_progressbar.emit(cur_xp, cur_lvl, next_level)
 	print("oie")
@@ -27,7 +26,6 @@ func _darDanoPlayer(dano, nomeSinal):
 
 func evento_ocorreu():
 	acontecer_evento.emit()
-	
 
 func pegar_seg(seguranca):
 	get_seg.emit(seguranca)

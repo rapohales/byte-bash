@@ -1,24 +1,22 @@
 extends CharacterBody2D
-
 @export var speed = 200.0
 @export var health_regen: float = 1.0
 @export var health = 100
 @export var max_health = 100
 @onready var animation_player = $AnimationPlayer
 @onready var anim_tree = $AnimationTree
-@onready var sprite = $AnimatedSprite2D
+@onready var sprite = $Sprite
 var can_take_damage := true
 var invulnerability_time := 1
 @onready var vida_ui = $VidaDisplay/HealthBar
+@onready var stats_ui = get_node("/root/Mundo/Ui")
 @onready var tela_morte = preload("res://Cenas/morte.tscn")
 
-
-# Sistema de esquivas
 var dodge_speed = 400
 var dodge_duration = 0.15
 var dodge_cooldown = 10.0
-var max_dodge_charges = 3
-var dodge_charges = 3
+@export var max_dodge_charges = 3
+var dodge_charges: float = 3.0
 var is_dodging = false
 var dodge_recharge_timer = Timer.new()
 
@@ -31,15 +29,13 @@ var dekt = null
 @export var start_direction : Vector2 = Vector2(0, 1)
 
 func _ready() -> void:
-	# Configuração do timer de recarga
 	add_child(dodge_recharge_timer)
 	dodge_recharge_timer.wait_time = dodge_cooldown
 	dodge_recharge_timer.timeout.connect(_replenish_dodge)
 	update_animation(start_direction)
-	_update_dodge_ui() 
 
 func _update_dodge_ui():
-	EventBus.emit_sigmal(dodge_charges, max_dodge_charges)
+	stats_ui.update_dash_bar()
 	
 func _replenish_dodge():
 	if dodge_charges < max_dodge_charges:
@@ -51,24 +47,25 @@ func _replenish_dodge():
 func tomar_dano(dano):
 	if not can_take_damage or is_dodging:
 		return
-	vida_ui.value -= dano
 	health -= dano
+	update_all_health_bars_ui(health)
 	flash()
 	if health <=0:
 		morrer()
 
 func ganhar_vida(vida):
-	vida_ui.value += vida
 	health += vida
-	
+	update_all_health_bars_ui(health)
+
+func update_all_health_bars_ui(health):
+	stats_ui.update_health_bar(health)
+	vida_ui.value = health
 
 func morrer():
 	print("Morreu")
 	get_tree().change_scene_to_file("res://Cenas/morte.tscn")
 	self.queue_free()
 	
-
-
 func pegar_input():
 	if is_dodging:
 		return
@@ -135,6 +132,6 @@ func aumentar_velocidade():
 	speed += 5
 
 func _on_dodge_timer_timeout() -> void:
-	if dodge_charges >= max_dodge_charges:
+	if dodge_charges <= max_dodge_charges:
 		_replenish_dodge()
 		

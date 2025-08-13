@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://o7mcyj2h6g0h"]
+[gd_scene format=3 uid="uid://bdaalsqtcri6i"]
 
 [node name="EnemyExplosion" type="CPUParticles2D"]
 emitting = false

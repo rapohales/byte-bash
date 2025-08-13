@@ -8,6 +8,9 @@ extends CanvasLayer
 signal onbotao1down(moedas, segurança, mult)
 signal onbotao2down(moedas, segurança, mult)
 
+var is_open: bool = false
+
+
 @onready var key1 = $TextureButton
 @onready var key2 = $TextureButton2
 @onready var box = $HBoxContainer
@@ -39,17 +42,15 @@ func choose_questions_rand():
 	text1.text = pergunta_selecionada.respostas[0]
 	text2.text = pergunta_selecionada.respostas[1]
 
+
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("botao2") and ativo == true:
 		_on_button_button_down()
 		
 	if event.is_action_pressed("botao1") and ativo == true:
 		_on_button_2_button_down()
-
 func more_opacity():
-	visible = true
 	ativo = true
-
 	var tween = create_tween()
 	tween.set_parallel()
 	tween.tween_property(Engine, "time_scale", 0.3, 0.4).set_trans(Tween.TRANS_SINE)
@@ -68,9 +69,8 @@ func reset():
 	but2.get_node("AnimatedSprite2D").visible = false
 
 func less_opacity():
-	ativo = false
 	var tween = create_tween()
-	tween.set_parallel()
+	tween.set_parallel(true)
 	tween.tween_property(Engine, "time_scale", 1, 1).set_trans(Tween.TRANS_SINE)
 	tween.tween_property(box, "modulate:a", 0.0, 0.5)
 	tween.tween_property(sprite, "modulate:a", 0.0, 0.5)
@@ -79,16 +79,19 @@ func less_opacity():
 	tween.tween_property(key1, "modulate:a", 0.0, 0.5)
 	tween.tween_property(key2, "modulate:a", 0.0, 0.5)
 	tween.tween_property(self, "visible", false, 0.9)
+	tween.tween_property(self, "ativo", false, 1.5)
 	
 
+	
 func _on_event(event_name: String, _data: Variant):
-	if event_name == "emitir_ui" and _data.contains("Chest"): 
+	if event_name == "emitir_ui" and _data.contains("Chest") and ativo == false:
 		reset()
 		choose_questions_rand()
 		more_opacity()
 		get_canvas()
 # ta ao contrario os botao
 func _on_button_button_down() -> void: 
+	if ativo == true:
 		onbotao1down.emit(pergunta_selecionada.r1_dinheiro, pergunta_selecionada.r1_seguranca, pergunta_selecionada.r1_mult)
 		var efeito_clicou = efeito_recompensa.instantiate()
 		efeito_clicou.text1 = "Dinheiro: %d" % pergunta_selecionada.r1_dinheiro
@@ -111,6 +114,7 @@ func _on_button_button_down() -> void:
 		less_opacity()
 
 func _on_button_2_button_down() -> void:
+	if ativo == true:
 		onbotao2down.emit(pergunta_selecionada.r2_dinheiro, pergunta_selecionada.r2_seguranca, pergunta_selecionada.r2_mult)
 		var efeito_clicou = efeito_recompensa.instantiate()
 		efeito_clicou.text1 = "Dinheiro: %d" % pergunta_selecionada.r2_dinheiro

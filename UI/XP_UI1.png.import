@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cjj6c1jvdntab"
-path="res://.godot/imported/hacker_proj.png-dc46096b9f2c6e710ee041c8ae518866.ctex"
+uid="uid://hog5xmck3ak"
+path="res://.godot/imported/XP_UI1.png-6ca2449307df7a9bf83a3839ccc99a81.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/enemies/hacker_proj.png"
-dest_files=["res://.godot/imported/hacker_proj.png-dc46096b9f2c6e710ee041c8ae518866.ctex"]
+source_file="res://UI/XP_UI1.png"
+dest_files=["res://.godot/imported/XP_UI1.png-6ca2449307df7a9bf83a3839ccc99a81.ctex"]
 
 [params]
 

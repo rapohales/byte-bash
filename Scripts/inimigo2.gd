@@ -19,7 +19,7 @@ signal morreu;
 var valor = 10
 @onready var sprite = $AnimatedSprite2D
 var current_frame := 0
-var animation_speed = 0.2  # Velocidade da animação
+var animation_speed = 0.2
 var timer = 0.0
 
 func _ready():
@@ -38,7 +38,6 @@ func animate_run(delta: float, direction: Vector2):
 	timer += delta
 	if velocity.length() > 0:
 		sprite.flip_h = direction.x < 0
-		
 		if timer >= animation_speed:
 			timer = 0.0
 			current_frame = (current_frame + 1) % 4

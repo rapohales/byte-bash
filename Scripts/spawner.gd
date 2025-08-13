@@ -36,8 +36,7 @@ func load_default_enemies():
 	var default_enemies = [
 		"res://Cenas/inimigo.tscn",
 		"res://Cenas/inimigo2.tscn",
-		"res://Cenas/inimigo3.tscn",
-		"res://Cenas/Cenas_inimigos/hacker.tscn"
+		"res://Cenas/inimigo3.tscn"
 	]
 	
 	for path in default_enemies:

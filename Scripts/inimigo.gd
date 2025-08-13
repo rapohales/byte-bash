@@ -1,5 +1,5 @@
 extends CharacterBody2D
-
+class_name Inimigo
 @onready var area2d = $Hurtbox
 var min_speed = 40
 var max_speed = 90

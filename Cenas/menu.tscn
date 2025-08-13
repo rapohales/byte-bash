@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dc550qjarwy37" path="res://Assets/Menu/bot_jogar.png" id="4_1evsv"]
 [ext_resource type="Texture2D" uid="uid://di2dus73k415l" path="res://Assets/menu_asset/bot_opcoes.png" id="4_kdsmm"]
 [ext_resource type="FontFile" uid="uid://bku1m2d5f0ncj" path="res://Assets/Font/Pixellari.ttf" id="6_kdsmm"]
-[ext_resource type="Script" uid="uid://rugkj0xxq0uk" path="res://Cenas/map_preview.gd" id="6_plcv4"]
+[ext_resource type="Script" uid="uid://rugkj0xxq0uk" path="res://Scripts/map_preview.gd" id="6_plcv4"]
 [ext_resource type="Texture2D" uid="uid://dcs05u5125yp5" path="res://Assets/Menu/bot_opcoes.png" id="7_2sm5j"]
 [ext_resource type="Texture2D" uid="uid://drm6a2ofwgqhd" path="res://Assets/Logo/logo-bytebash.png" id="7_8lfl8"]
 [ext_resource type="PackedScene" uid="uid://x55arxip1ly0" path="res://Cenas/Camera_menu.tscn" id="7_plcv4"]

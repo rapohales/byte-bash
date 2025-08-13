@@ -303,7 +303,7 @@ frame_progress = 1.0
 position = Vector2(2.96002, 3.96001)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables"]
-position = Vector2(-1.96002, -3.96001)
+position = Vector2(0.0399799, -0.96001)
 shape = SubResource("CircleShape2D_wkciq")
 
 [node name="Loja" parent="." instance=ExtResource("5_wkciq")]
@@ -318,5 +318,6 @@ wait_time = 30.0
 one_shot = true
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="body_exited" from="Interactables" to="." method="_on_interactables_body_exited"]
 [connection signal="timeout" from="TempoAberta" to="." method="_on_tempo_aberta_timeout"]
 [connection signal="timeout" from="TempoFechada" to="." method="_on_tempo_fechada_timeout"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://b7kb412psb4hf"]
 
 [ext_resource type="FontFile" uid="uid://bku1m2d5f0ncj" path="res://Assets/Font/Pixellari.ttf" id="1_0o8t7"]
-[ext_resource type="Script" uid="uid://rn103u6s1x4e" path="res://Cenas/morte.gd" id="1_q6v6l"]
+[ext_resource type="Script" uid="uid://rn103u6s1x4e" path="res://Scripts/morte.gd" id="1_q6v6l"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_q6v6l"]
 font = ExtResource("1_0o8t7")

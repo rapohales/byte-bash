@@ -255,7 +255,6 @@ texture_hover = SubResource("AtlasTexture_08fsj")
 stretch_mode = 0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Button"]
-visible = false
 z_index = 2
 position = Vector2(119, 72)
 scale = Vector2(2.53958, 2.34687)
@@ -298,7 +297,6 @@ scale_amount_curve = SubResource("Curve_ko0fh")
 color = Color(1, 0, 0, 1)
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Button"]
-visible = false
 z_index = 2
 position = Vector2(155.5, 77.5)
 scale = Vector2(2.53906, 2.14844)
@@ -334,7 +332,6 @@ vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Button2"]
-visible = false
 z_index = 2
 position = Vector2(119, 72)
 scale = Vector2(2.53958, 2.34687)
@@ -363,7 +360,6 @@ scale_amount_curve = SubResource("Curve_ko0fh")
 color = Color(1, 0, 0, 1)
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Button2"]
-visible = false
 z_index = 2
 position = Vector2(155.5, 77.5)
 scale = Vector2(2.53906, 2.14844)

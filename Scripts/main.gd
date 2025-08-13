@@ -4,6 +4,7 @@ extends Node
 
 var seguranca_att: float = 0.0
 var perguntas: PerguntasCadastradas = preload("res://Resources/todas_perguntas.tres")
+
 func comecarMusica():
 	$AudioStreamPlayer2D.playing = true
 func att_vulnerabilidade(seguranca):
