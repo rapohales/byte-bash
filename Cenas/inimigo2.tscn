@@ -48,7 +48,8 @@ size = Vector2(29, 30)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ed2xb"]
 size = Vector2(29, 29)
 
-[node name="Inimigo2" type="CharacterBody2D" groups=["enemies"]]
+[node name="Inimigo2" type="Area2D" groups=["enemies"]]
+z_index = 1
 collision_layer = 4
 collision_mask = 8
 script = ExtResource("1_c7l25")
@@ -73,9 +74,11 @@ shape = SubResource("RectangleShape2D_ed2xb")
 
 [node name="Cooldown" type="Timer" parent="."]
 wait_time = 0.1
+autostart = true
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.005
+autostart = true
 
 [connection signal="body_entered" from="Hurtbox" to="." method="_on_body_entered"]
 [connection signal="body_exited" from="Hurtbox" to="." method="_on_body_exited"]

@@ -10,7 +10,6 @@ signal onbotao2down(moedas, segurança, mult)
 
 var is_open: bool = false
 
-
 @onready var key1 = $TextureButton
 @onready var key2 = $TextureButton2
 @onready var box = $HBoxContainer
@@ -20,6 +19,7 @@ var is_open: bool = false
 @onready var but2 = $Button2
 @onready var text1 = $Button/Label
 @onready var text2 = $Button2/Label
+@onready var colRect = $ColorRect
 
 @onready var right_ans = preload("res://Sons de Hits/good.wav")
 @onready var wrong_ans = preload("res://Sons de Hits/hurt.wav")
@@ -32,6 +32,7 @@ var pergunta_selecionada
 @onready var efeito_recompensa = preload("res://Cenas/efeito.tscn") 
 
 func _ready():
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	print(perguntas[0].texto)
 	EventBus.event_triggered.connect(_on_event)
 
@@ -60,7 +61,14 @@ func more_opacity():
 	tween.tween_property(but2, "modulate:a", 1.0, 0.3)
 	tween.tween_property(key1, "modulate:a", 1.0, 0.3)
 	tween.tween_property(key2, "modulate:a", 1.0, 0.3)
+	tween.tween_property(colRect, "modulate:a", 1.0, 0.3)
+	tween.finished.connect(stopTimeOrNot)
 
+func stopTimeOrNot():
+	if get_tree().paused != true:
+		get_tree().paused = true
+	else:
+		get_tree().paused == false
 func reset():
 	visible = true
 	but1.get_node("AnimatedSprite2D2").visible = false
@@ -69,6 +77,7 @@ func reset():
 	but2.get_node("AnimatedSprite2D").visible = false
 
 func less_opacity():
+	get_tree().paused = false
 	var tween = create_tween()
 	tween.set_parallel(true)
 	tween.tween_property(Engine, "time_scale", 1, 1).set_trans(Tween.TRANS_SINE)
@@ -78,10 +87,9 @@ func less_opacity():
 	tween.tween_property(but2, "modulate:a", 0.0, 0.5)
 	tween.tween_property(key1, "modulate:a", 0.0, 0.5)
 	tween.tween_property(key2, "modulate:a", 0.0, 0.5)
+	tween.tween_property(colRect, "modulate:a", 0.0, 0.5)
 	tween.tween_property(self, "visible", false, 0.9)
 	tween.tween_property(self, "ativo", false, 1.5)
-	
-
 	
 func _on_event(event_name: String, _data: Variant):
 	if event_name == "emitir_ui" and _data.contains("Chest") and ativo == false:

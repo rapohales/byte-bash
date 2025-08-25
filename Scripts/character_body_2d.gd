@@ -8,7 +8,6 @@ extends CharacterBody2D
 @onready var sprite = $Sprite
 var can_take_damage := true
 var invulnerability_time := 1
-@onready var vida_ui = $VidaDisplay/HealthBar
 @onready var stats_ui = get_node("/root/Mundo/Ui")
 @onready var tela_morte = preload("res://Cenas/morte.tscn")
 
@@ -33,6 +32,7 @@ func _ready() -> void:
 	dodge_recharge_timer.wait_time = dodge_cooldown
 	dodge_recharge_timer.timeout.connect(_replenish_dodge)
 	update_animation(start_direction)
+	$AudioStreamPlayer2D.process_mode = Node.PROCESS_MODE_ALWAYS
 
 func _update_dodge_ui():
 	stats_ui.update_dash_bar()
@@ -59,7 +59,6 @@ func ganhar_vida(vida):
 
 func update_all_health_bars_ui(health):
 	stats_ui.update_health_bar(health)
-	vida_ui.value = health
 
 func morrer():
 	print("Morreu")
@@ -82,7 +81,6 @@ func start_dodge():
 	can_take_damage = false
 	if dodge_charges < max_dodge_charges and not dodge_recharge_timer.is_stopped():
 		dodge_recharge_timer.start()
-	
 	if input_direction != Vector2.ZERO:
 		velocity = input_direction.normalized() * dodge_speed
 	else:
@@ -134,4 +132,3 @@ func aumentar_velocidade():
 func _on_dodge_timer_timeout() -> void:
 	if dodge_charges <= max_dodge_charges:
 		_replenish_dodge()
-		

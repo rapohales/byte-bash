@@ -35,8 +35,6 @@ func update_health_bar(vida_atual):
 	health_inner_hud.value = vida_atual
 func update_dash_bar():
 	dash_inner_hud.max_value = player.max_dodge_charges
-	var tween = create_tween()
-	tween.tween_property(dash_inner_hud, "value", player.dodge_charges, 2)
 	dash_inner_hud.value = player.dodge_charges
 func update_progressbar_display(cur_xp, cur_lvl, next_level):
 	progressbar.value = cur_xp

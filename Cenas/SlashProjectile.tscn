@@ -36,7 +36,7 @@ animations = [{
 
 [node name="SlashProjectile" type="Area2D"]
 collision_layer = 4
-collision_mask = 4
+collision_mask = 15
 input_pickable = false
 script = ExtResource("1_u6lkq")
 
@@ -63,5 +63,6 @@ autostart = true
 texture = SubResource("NoiseTexture2D_u6lkq")
 texture_scale = 0.4
 
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_visibility_notifier_2d_screen_exited"]

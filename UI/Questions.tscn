@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://1srfhedrakwv"]
+[gd_scene load_steps=36 format=3 uid="uid://1srfhedrakwv"]
 
 [ext_resource type="Script" uid="uid://bjfh0yu6c7yv4" path="res://Scripts/questions.gd" id="1_s6nhl"]
 [ext_resource type="Texture2D" uid="uid://bwts30q76ga5k" path="res://Assets/UI Bundle/UI Bundle/CyberTheme.png" id="2_fjxn8"]
@@ -97,9 +97,7 @@ metadata/_custom_type_script = "uid://ce66n2vvd0mp3"
 
 [sub_resource type="LabelSettings" id="LabelSettings_xbf21"]
 font = ExtResource("4_ljl62")
-font_color = Color(0.893519, 0.838563, 0.99562, 1)
-outline_size = 1
-shadow_size = 2
+font_size = 26
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ljl62"]
 atlas = ExtResource("2_fjxn8")
@@ -195,10 +193,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gss22"]
-atlas = ExtResource("4_gss22")
-region = Rect2(385, 34, 94, 31)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_b210v"]
 atlas = ExtResource("6_08fsj")
 region = Rect2(321, 257, 14, 14)
@@ -215,27 +209,42 @@ layer = 2
 script = ExtResource("1_s6nhl")
 perguntas = Array[ExtResource("2_xbf21")]([SubResource("Resource_ljl62"), SubResource("Resource_gss22"), SubResource("Resource_08fsj"), SubResource("Resource_b210v"), SubResource("Resource_ko0fh"), SubResource("Resource_ibpsj")])
 
+[node name="ColorRect" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_left = -4.0
+offset_top = 4.0
+offset_right = 1507.0
+offset_bottom = 806.0
+color = Color(0.133333, 0.133333, 0.133333, 0.678431)
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0)
-position = Vector2(752, 573)
-scale = Vector2(4.84118, 3.72581)
+position = Vector2(748.75, 225)
+scale = Vector2(4.84412, 5.10484)
 texture = ExtResource("2_fjxn8")
 region_enabled = true
 region_rect = Rect2(3, 273, 170, 62)
 
 [node name="HBoxContainer" type="VBoxContainer" parent="."]
-modulate = Color(0.679, 0.679, 0.679, 0)
+modulate = Color(0.678431, 0.678431, 0.678431, 0)
 self_modulate = Color(1, 1, 1, 0)
-offset_left = 357.0
-offset_top = 474.0
-offset_right = 1146.0
-offset_bottom = 666.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -382.5
+offset_top = -271.0
+offset_right = 382.5
+offset_bottom = 271.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="Label" type="Label" parent="HBoxContainer"]
 layout_mode = 2
-text = "Pergunta"
+text = "IS IT READABLE??"
 label_settings = SubResource("LabelSettings_xbf21")
 horizontal_alignment = 1
 
@@ -245,10 +254,10 @@ layout_mode = 2
 [node name="Button" type="TextureButton" parent="."]
 modulate = Color(1, 1, 1, 0)
 layout_direction = 2
-offset_left = 770.0
-offset_top = 554.0
-offset_right = 1000.0
-offset_bottom = 622.0
+offset_left = 773.0
+offset_top = 425.0
+offset_right = 1111.0
+offset_bottom = 536.0
 texture_normal = SubResource("AtlasTexture_ljl62")
 texture_pressed = SubResource("AtlasTexture_08fsj")
 texture_hover = SubResource("AtlasTexture_08fsj")
@@ -256,18 +265,18 @@ stretch_mode = 0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Button"]
 z_index = 2
-position = Vector2(119, 72)
-scale = Vector2(2.53958, 2.34687)
+position = Vector2(176.01, 102.5)
+scale = Vector2(3.64984, 3.39167)
 sprite_frames = SubResource("SpriteFrames_cfpnc")
 animation = &"right"
 
 [node name="Label" type="Label" parent="Button"]
 z_index = 4
 layout_mode = 0
-offset_left = 4.0
-offset_top = 4.0
-offset_right = 184.0
-offset_bottom = 68.0
+offset_left = 51.0
+offset_top = 14.0
+offset_right = 231.0
+offset_bottom = 78.0
 scale = Vector2(1.28, 1)
 text = "Texto teste"
 label_settings = SubResource("LabelSettings_ljl62")
@@ -277,7 +286,7 @@ autowrap_mode = 3
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="Button"]
 z_index = 3
-position = Vector2(111.375, 13.8125)
+position = Vector2(159, 13.8125)
 emitting = false
 amount = 25
 one_shot = true
@@ -298,32 +307,31 @@ color = Color(1, 0, 0, 1)
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Button"]
 z_index = 2
-position = Vector2(155.5, 77.5)
-scale = Vector2(2.53906, 2.14844)
+position = Vector2(230.469, 112.656)
+scale = Vector2(3.6792, 3.24463)
 sprite_frames = SubResource("SpriteFrames_ej5gh")
 animation = &"wrong"
 frame = 3
-frame_progress = 1.0
 
 [node name="Button2" type="TextureButton" parent="."]
 modulate = Color(1, 1, 1, 0)
 layout_direction = 2
-offset_left = 492.0
-offset_top = 554.0
-offset_right = 722.0
-offset_bottom = 622.0
+offset_left = 383.0
+offset_top = 425.0
+offset_right = 721.0
+offset_bottom = 536.0
 texture_normal = SubResource("AtlasTexture_ljl62")
-texture_pressed = SubResource("AtlasTexture_gss22")
-texture_hover = SubResource("AtlasTexture_gss22")
+texture_pressed = SubResource("AtlasTexture_08fsj")
+texture_hover = SubResource("AtlasTexture_08fsj")
 stretch_mode = 0
 
 [node name="Label" type="Label" parent="Button2"]
 z_index = 4
 layout_mode = 0
-offset_left = 4.0
-offset_top = 4.0
-offset_right = 184.0
-offset_bottom = 68.0
+offset_left = 40.0
+offset_top = 15.0
+offset_right = 220.0
+offset_bottom = 79.0
 scale = Vector2(1.28, 1)
 text = "Texto teste"
 label_settings = SubResource("LabelSettings_ljl62")
@@ -333,14 +341,14 @@ autowrap_mode = 3
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Button2"]
 z_index = 2
-position = Vector2(119, 72)
-scale = Vector2(2.53958, 2.34687)
+position = Vector2(174.656, 104.047)
+scale = Vector2(3.65573, 3.43255)
 sprite_frames = SubResource("SpriteFrames_cfpnc")
 animation = &"right"
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="Button2"]
 z_index = 3
-position = Vector2(111.375, 13.8125)
+position = Vector2(156, 10)
 emitting = false
 amount = 25
 one_shot = true
@@ -361,29 +369,28 @@ color = Color(1, 0, 0, 1)
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Button2"]
 z_index = 2
-position = Vector2(155.5, 77.5)
-scale = Vector2(2.53906, 2.14844)
+position = Vector2(226, 114)
+scale = Vector2(3.6792, 3.24463)
 sprite_frames = SubResource("SpriteFrames_ej5gh")
 animation = &"wrong"
 frame = 3
-frame_progress = 1.0
 
 [node name="TextureButton" type="TextureButton" parent="."]
 modulate = Color(1, 1, 1, 0)
-offset_left = 459.0
-offset_top = 579.0
-offset_right = 473.0
-offset_bottom = 593.0
+offset_left = 326.0
+offset_top = 468.0
+offset_right = 340.0
+offset_bottom = 482.0
 scale = Vector2(2, 2)
 texture_normal = SubResource("AtlasTexture_b210v")
 texture_pressed = SubResource("AtlasTexture_ibpsj")
 
 [node name="TextureButton2" type="TextureButton" parent="."]
 modulate = Color(1, 1, 1, 0)
-offset_left = 736.0
-offset_top = 583.0
-offset_right = 750.0
-offset_bottom = 597.0
+offset_left = 1135.0
+offset_top = 465.0
+offset_right = 1149.0
+offset_bottom = 479.0
 scale = Vector2(2, 2)
 texture_normal = SubResource("AtlasTexture_ko0fh")
 

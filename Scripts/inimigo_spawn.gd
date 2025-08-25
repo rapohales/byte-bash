@@ -46,7 +46,6 @@ func get_spawn_position_outside_camera() -> Vector2:
 		viewport_rect.size
 	)
 	var spawn_rect = camera_rect.grow(spawn_margin)
-	
 	var side = randi() % 2
 	var spawn_pos = Vector2.ZERO
 	

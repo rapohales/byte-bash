@@ -8,7 +8,6 @@ extends Marker2D
 var spawn_delay: float = randf_range(max_delay, min_delay) + min_delay
 @export var spawn_radius: float = 50.0
 
-# Texturas para a barra de vida (adicionado conforme seu código)
 var bar_red = preload("res://Assets/Vida_bar/healthbar4.png")
 var bar_blue = preload("res://Assets/Vida_bar/healthbar1.png")
 var bar_yellow = preload("res://Assets/Vida_bar/healthbar2.png")
@@ -16,12 +15,8 @@ var bar_yellow = preload("res://Assets/Vida_bar/healthbar2.png")
 var _timer := 0.0
 
 func _ready():
-	# Carrega inimigos padrão se não estiverem configurados
 	if enemy_scenes.is_empty():
 		load_default_enemies()
-	
-	# Debug
-	print("Spawner iniciado com ", enemy_scenes.size(), " tipos de inimigos")
 
 func _process(delta):
 	if enemy_scenes.is_empty():
@@ -54,7 +49,6 @@ func spawn_random_enemy():
 		var angle = randf() * TAU
 		spawn_pos += Vector2(cos(angle), sin(angle)) * randf() * spawn_radius
 		new_enemy.global_position = spawn_pos
-		# Configura a barra de vida do inimigo
 		setup_enemy_healthbar(new_enemy)
 
 

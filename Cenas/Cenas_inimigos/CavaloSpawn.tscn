@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cjtysvtdg2wg3"]
+
+[ext_resource type="Script" uid="uid://dpgf5rkwhyxdh" path="res://Cenas/Cenas_inimigos/cavalo_spawn.gd" id="1_30eiv"]
+
+[node name="CavaloSpawn" type="Marker2D"]
+script = ExtResource("1_30eiv")

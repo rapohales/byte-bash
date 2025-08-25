@@ -1,12 +1,12 @@
 extends Node
 
-var current_xp := 0
-var current_level := 1
+var boss_horse = preload("res://Cenas/Cenas_inimigos/CavaloTroia.tscn")
+var upgrade_tab_scene = preload("res://Cenas/upgrade_tab.tscn")
+@export var current_xp := 0
+@export var current_level := 1
 var xp_to_next_level := 100# XP necessário para o nível 2
 var next_threshold;
 signal nivel_att(cur_xp)
-# Dicionário com os thresholds de XP para cada nível
-# Ou uma fórmula para calcular dinamicamente
 var xp_thresholds = {
 	1: 0,     
 	2: 100,   
@@ -33,9 +33,7 @@ var xp_thresholds = {
 	23: 2300,
 	24: 2400,
 	25: 2400,
-	
 }
-	
 func add_xp(amount: int):
 	current_xp += amount
 	check_level_up()
@@ -43,6 +41,7 @@ func add_xp(amount: int):
 func check_level_up():
 	while current_xp >= get_xp_required_for_level(current_level + 1):
 		level_up()
+		check_if_third_level()
 
 func get_xp_required_for_level(level):
 	if xp_thresholds.has(level):
@@ -52,7 +51,6 @@ func level_up():
 	current_level += 1
 	current_xp = 0
 	Main.vul_por_nivel(current_level)
-	
 	var previous_threshold = get_xp_required_for_level(current_level - 1)
 	next_threshold = get_xp_required_for_level(current_level)
 	xp_to_next_level = next_threshold
@@ -63,6 +61,16 @@ func level_up():
 		if current_level == niveis_questao[i]:
 			EventBus.emitir_ui("emitir_ui", "´pmtps")
 
-
+func check_if_third_level():
+	if current_level % 3 == 0:
+		show_upgrade_tab()
+	if current_level == 10:
+		var cavalo_obj = boss_horse.instantiate()
+		add_child(cavalo_obj)
+		
+func show_upgrade_tab():
+	var upgrade_tab_obj = upgrade_tab_scene.instantiate()
+	add_child(upgrade_tab_obj)
+	
 func _on_inimigo_morreu(valor) -> void:
 	add_xp(valor)	 

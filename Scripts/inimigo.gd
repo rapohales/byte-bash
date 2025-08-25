@@ -1,10 +1,8 @@
-extends CharacterBody2D
-class_name Inimigo
+extends Area2D
 @onready var area2d = $Hurtbox
 var min_speed = 40
 var max_speed = 90
 @export var speed: int = randi() % ((max_speed) - (min_speed)) + (min_speed)
-@export var player: Node2D  
 @export var max_health: int = 100
 @export var health: int = 100
 @export var dano: int = 10
@@ -22,20 +20,18 @@ var valor = 10
 var current_frame := 0
 var animation_speed = 0.2  
 var timer = 0.0
-
-func _ready():
-	if player == null:
-		player = get_tree().get_first_node_in_group("player")
-	print(speed)
+var xp_drop = preload("res://Cenas/XpDrop.tscn")
+@onready var player = get_tree().get_first_node_in_group("player")
 
 func _physics_process(delta):
-	if player:
-		var direction = (player.global_position - global_position).normalized()
-		velocity = direction * speed
-		move_and_slide()
-		animate_run(delta, direction)
+	if not is_instance_valid(player):
+		return
+	var direction = global_position.direction_to(player.global_position)
+	global_position += direction * speed * delta
+	animate_run(delta, direction)
 
 func animate_run(delta: float, direction: Vector2):
+	var velocity = direction * speed
 	timer += delta
 	if velocity.length() > 0:
 		sprite.flip_h = direction.x < 0
@@ -60,10 +56,18 @@ func tomarDano(_dano):
 		morrer()
 func morrer():
 	emit_signal('morreu', valor)
-	var xp = player.get_node("Xp2")
-	xp.add_xp(20)
-	queue_free()
+	call_deferred("spawn_xp_drop")
+	call_deferred("queue_free")
 	
+func spawn_xp_drop():
+	var xp_obj = xp_drop.instantiate()
+	xp_obj.xp_amount = xp_amount
+	var drop_handler = get_tree().current_scene.find_child("DropHandler", true, false)
+	if drop_handler:
+		drop_handler.add_child(xp_obj)
+	
+	xp_obj.global_position = self.global_position
+
 func _on_questions_temp_dano_inimigo(_dano: Variant) -> void:
 	health -= _dano
 	tomarDano(_dano)

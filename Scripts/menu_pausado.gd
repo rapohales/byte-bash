@@ -15,7 +15,7 @@ func abrir_menu() -> void:
 		$CanvasLayer.visible = true
 	else: 
 		fechar_menu()
-		
+
 
 func fechar_menu():
 	get_tree().paused = false

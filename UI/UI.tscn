@@ -148,17 +148,14 @@ metadata/_edit_use_anchors_ = true
 visibility_layer = 2
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 1.17488
-anchor_top = -1.36117
-anchor_right = 1.17488
-anchor_bottom = -1.32302
-offset_left = -632.488
-offset_top = 395.008
-offset_right = -411.488
-offset_bottom = 425.515
+anchor_left = -0.0474308
+anchor_top = 1.17361
+anchor_right = 0.00988142
+anchor_bottom = 1.38889
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 0
+text = "1"
 label_settings = SubResource("LabelSettings_pa3ot")
 metadata/_edit_use_anchors_ = true
 
@@ -220,7 +217,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Marker2D" type="Marker2D" parent="."]
 self_modulate = Color(1, 1, 1, 0.627451)
-position = Vector2(1245, 50)
+position = Vector2(403, 230)
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="."]
 modulate = Color(1, 1, 1, 0.796078)
