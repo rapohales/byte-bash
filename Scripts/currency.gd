@@ -23,8 +23,8 @@ func _on_coin_timer_timeout() -> void:
 	moedas += 1 * mult;
 	UI_node.update_score_display(moedas, seguranca, mult)
 
-func update_score_ui(score, _seguranca, mult):
-	EventBus.atualizar_score(score, _seguranca, mult)
+func update_score_ui(score, _seguranca, _mult):
+	EventBus.atualizar_score(score, _seguranca, _mult)
 
 func _on_questions_onbotao_1_down(_moedas: Variant, _seguranca: Variant, _mult) -> void:
 	moedas += _moedas

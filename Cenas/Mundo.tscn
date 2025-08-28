@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=4 uid="uid://6i8a8il2mpwd"]
+[gd_scene load_steps=46 format=4 uid="uid://6i8a8il2mpwd"]
 
 [ext_resource type="Script" uid="uid://ddp4l8pqchl4u" path="res://Scripts/main.gd" id="1_8trbm"]
 [ext_resource type="TileSet" uid="uid://3scimsm6nob5" path="res://PixelNature_Sprites/Mundo.tres" id="2_25bfp"]
@@ -22,6 +22,8 @@
 [ext_resource type="PackedScene" uid="uid://b5e0w0kwp1rvn" path="res://Cenas/loja_lugar.tscn" id="20_ju85c"]
 [ext_resource type="PackedScene" uid="uid://p87lvpqfhoh3" path="res://Cenas/menu_pausado.tscn" id="20_rlr5u"]
 [ext_resource type="Texture2D" uid="uid://bvvhuqwluukf5" path="res://Assets/WhiteHouse.png" id="21_rlr5u"]
+[ext_resource type="Script" uid="uid://cr4thijfyly1u" path="res://Cenas/clock.gd" id="23_85lsj"]
+[ext_resource type="FontFile" uid="uid://bku1m2d5f0ncj" path="res://Assets/Font/Pixellari.ttf" id="24_3p4dr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qb65n"]
 texture = ExtResource("3_feos1")
@@ -232,6 +234,10 @@ r2_seguranca = 1
 certo2 = true
 metadata/_custom_type_script = "uid://ce66n2vvd0mp3"
 
+[sub_resource type="LabelSettings" id="LabelSettings_ex51s"]
+font = ExtResource("24_3p4dr")
+font_size = 41
+
 [node name="Mundo" type="Node2D"]
 y_sort_enabled = true
 position = Vector2(85, 74)
@@ -257,7 +263,8 @@ tile_set = SubResource("TileSet_gejyx")
 [node name="Player" parent="." groups=["player"] instance=ExtResource("4_wvmf8")]
 position = Vector2(400, 267)
 speed = 150.0
-cena_espada = ExtResource("8_a0d8t")
+health = 1000000
+max_health = 1000000
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(0, -11)
@@ -320,6 +327,7 @@ max_distance = 4096.0
 parameters/looping = false
 
 [node name="Ui" parent="." instance=ExtResource("5_oyce6")]
+process_mode = 3
 
 [node name="Chest" type="Area2D" parent="."]
 y_sort_enabled = true
@@ -356,6 +364,7 @@ script = ExtResource("9_feos1")
 [node name="Coin_timer" type="Timer" parent="."]
 process_mode = 3
 autostart = true
+ignore_time_scale = true
 
 [node name="Chance_event" type="Timer" parent="."]
 wait_time = 5.0
@@ -529,9 +538,25 @@ offset = Vector2(0, -28.075)
 [node name="DropHandler" type="Node2D" parent="."]
 unique_name_in_owner = true
 
+[node name="Clock" type="CanvasLayer" parent="."]
+process_mode = 3
+script = ExtResource("23_85lsj")
+
+[node name="Label" type="Label" parent="Clock"]
+offset_left = 1378.0
+offset_top = 20.0
+offset_right = 1468.0
+offset_bottom = 85.0
+label_settings = SubResource("LabelSettings_ex51s")
+
+[node name="Timer" type="Timer" parent="Clock"]
+autostart = true
+ignore_time_scale = true
+
 [connection signal="nivel_att" from="Player/Xp2" to="." method="_on_xp_2_nivel_att"]
 [connection signal="onbotao1down" from="Questions" to="Currency" method="_on_questions_onbotao_1_down"]
 [connection signal="onbotao2down" from="Questions" to="Currency" method="_on_questions_onbotao_2_down"]
 [connection signal="get_seguranca" from="Currency" to="." method="_on_currency_get_seguranca"]
 [connection signal="timeout" from="Coin_timer" to="Currency" method="_on_coin_timer_timeout"]
 [connection signal="timeout" from="Chance_event" to="Currency" method="_on_chance_event_timeout"]
+[connection signal="timeout" from="Clock/Timer" to="Clock" method="_on_timer_timeout"]

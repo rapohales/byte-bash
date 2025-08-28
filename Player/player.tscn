@@ -1,7 +1,8 @@
-[gd_scene load_steps=110 format=3 uid="uid://di2jt4oe5vqdr"]
+[gd_scene load_steps=111 format=3 uid="uid://di2jt4oe5vqdr"]
 
 [ext_resource type="Script" uid="uid://imqsowvl3c2a" path="res://Scripts/character_body_2d.gd" id="1_4ntmi"]
 [ext_resource type="Texture2D" uid="uid://p00jt2gns5s4" path="res://Player/tileset.png" id="2_4ntmi"]
+[ext_resource type="PackedScene" uid="uid://bm7yxhj1xs7vg" path="res://Cenas/pistola.tscn" id="2_gwnis"]
 [ext_resource type="PackedScene" uid="uid://b3x6j2lcn1nna" path="res://Cenas/interacting_component.tscn" id="3_btcbx"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4ntmi"]
@@ -931,6 +932,7 @@ position = Vector2(410, 296)
 wall_min_slide_angle = 0.0
 safe_margin = 0.001
 script = ExtResource("1_4ntmi")
+cena_pistola = ExtResource("2_gwnis")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["jogador"]]
 position = Vector2(1, 8)

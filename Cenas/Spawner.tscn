@@ -4,3 +4,9 @@
 
 [node name="Marker2D" type="Marker2D"]
 script = ExtResource("1_0dpvn")
+
+[node name="DificultyTimer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[connection signal="timeout" from="DificultyTimer" to="." method="_on_dificulty_timer_timeout"]

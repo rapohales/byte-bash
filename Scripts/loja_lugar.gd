@@ -43,5 +43,5 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 	if open == true:
 		sprite_2d.play("Idle")
 		
-func _on_interactables_body_exited() -> void:
+func _on_interactables_body_exited(body) -> void:
 	close_ui_store()

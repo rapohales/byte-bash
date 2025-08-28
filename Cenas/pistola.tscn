@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bm7yxhj1xs7vg"]
+
+[ext_resource type="PackedScene" uid="uid://bumiu55c0q2gg" path="res://Cenas/BaseWeapon.tscn" id="1_hgghs"]
+[ext_resource type="PackedScene" uid="uid://y3nmtfpdbx4a" path="res://Cenas/TiroPistola.tscn" id="2_mhv2f"]
+
+[node name="BaseWeapon" instance=ExtResource("1_hgghs")]
+is_auto_locked = true
+damage = 20.0
+projectile_scene = ExtResource("2_mhv2f")
+
+[node name="TargetingArea" parent="." index="0"]
+collision_mask = 32776
+
+[node name="ShootTimer" parent="." index="1"]
+wait_time = 0.5

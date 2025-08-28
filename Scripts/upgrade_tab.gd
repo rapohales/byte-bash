@@ -33,9 +33,6 @@ func stop_displaying_bar():
 	var tween = create_tween()
 	tween.tween_property(colRect, "modulate:a", 0.0, 0.5)
 	sprite.play("go_up")
-	btn1.visible = false
-	btn2.visible = false
-	btn3.visible = false
 	get_tree().paused = false
 
 func _on_button_pressed() -> void:
@@ -50,6 +47,7 @@ func _on_button_pressed() -> void:
 func _on_button_2_pressed() -> void:
 	var _upgrade = upgrades_db.achar_id_funcao(upgrades_usable[se_item_indice].id)
 	if _upgrade:
+		
 		if upgrades_usable[se_item_indice].arma != true:
 			_upgrade.aplicar_funcao(player)
 		else:
@@ -64,7 +62,7 @@ func _on_button_3_pressed() -> void:
 		else:
 			_upgrade.aplicar_funcao(player.get_node(upgrades_usable[te_item_indice].alvo_nome))
 	stop_displaying_bar()
-	
+
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if sprite.animation == "go_up":
 		queue_free()

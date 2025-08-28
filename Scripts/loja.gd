@@ -24,6 +24,7 @@ func random_item():
 	val2.text = "Preço: %d" %upgrades_usable[se_item_indice].preco
 	val3.text = "Preço: %d" %upgrades_usable[te_item_indice].preco
 func _ready() -> void: 
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	random_item()
 	EventBus.loja_ui.connect(abrirLoja)
 	pass

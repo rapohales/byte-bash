@@ -20,6 +20,7 @@ var is_dodging = false
 var dodge_recharge_timer = Timer.new()
 
 @export var cena_espada : PackedScene
+@export var cena_pistola : PackedScene
 
 @onready var state_machine = anim_tree.get("parameters/playback")
 
@@ -28,6 +29,7 @@ var dekt = null
 @export var start_direction : Vector2 = Vector2(0, 1)
 
 func _ready() -> void:
+	equipar_armas()
 	add_child(dodge_recharge_timer)
 	dodge_recharge_timer.wait_time = dodge_cooldown
 	dodge_recharge_timer.timeout.connect(_replenish_dodge)
@@ -107,7 +109,9 @@ func update_animation(move_input: Vector2):
 	if(move_input != Vector2.ZERO):
 		anim_tree.set("parameters/idle/blend_position", move_input)
 		anim_tree.set("parameters/walk/blend_position", move_input)
+		
 
+		
 func estado_animacao():
 	if is_dodging:
 		state_machine.travel("walk")
@@ -129,6 +133,13 @@ func aumentar_vida():
 func aumentar_velocidade():
 	speed += 5
 
+func equipar_armas():
+	if cena_pistola:
+		var pistola = cena_pistola.instantiate()
+		pistola.wielder = self
+		add_child(pistola)
+		pistola.is_equipped = true
+		
 func _on_dodge_timer_timeout() -> void:
 	if dodge_charges <= max_dodge_charges:
 		_replenish_dodge()

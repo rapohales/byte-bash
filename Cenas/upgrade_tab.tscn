@@ -385,13 +385,15 @@ script = ExtResource("1_ycfl7")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 modulate = Color(1, 1, 1, 0)
-offset_left = -4.0
-offset_top = 4.0
-offset_right = 1507.0
-offset_bottom = 806.0
+offset_left = -16.0
+offset_top = -15.0
+offset_right = 1526.0
+offset_bottom = 825.0
+mouse_filter = 2
 color = Color(0.133333, 0.133333, 0.133333, 0.678431)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 1
 position = Vector2(782, 564)
 scale = Vector2(3.93917, 4.0225)
 sprite_frames = SubResource("SpriteFrames_p3ri5")
@@ -401,10 +403,10 @@ speed_scale = 1.5
 [node name="Button" type="Button" parent="AnimatedSprite2D"]
 z_index = 1
 anchors_preset = -1
-anchor_left = 0.69075
-anchor_top = 0.295833
-anchor_right = 0.69075
-anchor_bottom = 0.295833
+anchor_left = 0.683019
+anchor_top = 0.298697
+anchor_right = 0.699686
+anchor_bottom = 0.30703
 offset_left = -58.9623
 offset_top = -18.8436
 offset_right = 63.0377
@@ -418,10 +420,10 @@ metadata/_edit_use_anchors_ = true
 [node name="Button2" type="Button" parent="AnimatedSprite2D"]
 z_index = 1
 anchors_preset = -1
-anchor_left = 0.378333
-anchor_top = 0.295833
-anchor_right = 0.378333
-anchor_bottom = 0.295833
+anchor_left = 0.370603
+anchor_top = 0.298697
+anchor_right = 0.420603
+anchor_bottom = 0.30703
 offset_left = -59.4723
 offset_top = -18.8436
 offset_right = 60.5277
@@ -435,13 +437,13 @@ metadata/_edit_use_anchors_ = true
 [node name="Button3" type="Button" parent="AnimatedSprite2D"]
 z_index = 1
 anchors_preset = -1
-anchor_left = 0.0535
-anchor_top = 0.295833
-anchor_right = 0.0535
-anchor_bottom = 0.295833
+anchor_left = 0.0541025
+anchor_top = 0.298697
+anchor_right = 0.0874358
+anchor_bottom = 0.298697
 offset_left = -60.4923
 offset_top = -18.8436
-offset_right = 55.5077
+offset_right = 55.5078
 offset_bottom = 81.1564
 scale = Vector2(0.255, 0.255)
 alignment = 0

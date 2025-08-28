@@ -50,9 +50,10 @@ size = Vector2(29, 29)
 
 [node name="Area2D" type="Area2D" groups=["enemies"]]
 z_index = 1
-collision_layer = 4
+collision_layer = 32772
 collision_mask = 8
 script = ExtResource("1_bj5kt")
+max_health = 200
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_m0jiw")
@@ -60,6 +61,7 @@ frame = 5
 frame_progress = 0.789517
 
 [node name="Hurtbox" type="Area2D" parent="."]
+collision_mask = 32769
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2(-0.5, 0)

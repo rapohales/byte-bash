@@ -4,7 +4,7 @@ var boss_horse = preload("res://Cenas/Cenas_inimigos/CavaloTroia.tscn")
 var upgrade_tab_scene = preload("res://Cenas/upgrade_tab.tscn")
 @export var current_xp := 0
 @export var current_level := 1
-var xp_to_next_level := 100# XP necessário para o nível 2
+var xp_to_next_level := 100
 var next_threshold;
 signal nivel_att(cur_xp)
 var xp_thresholds = {
@@ -46,7 +46,7 @@ func check_level_up():
 func get_xp_required_for_level(level):
 	if xp_thresholds.has(level):
 		return xp_thresholds[level]
-		
+
 func level_up():
 	current_level += 1
 	current_xp = 0
@@ -67,10 +67,10 @@ func check_if_third_level():
 	if current_level == 10:
 		var cavalo_obj = boss_horse.instantiate()
 		add_child(cavalo_obj)
-		
+
 func show_upgrade_tab():
 	var upgrade_tab_obj = upgrade_tab_scene.instantiate()
 	add_child(upgrade_tab_obj)
-	
+
 func _on_inimigo_morreu(valor) -> void:
-	add_xp(valor)	 
+	add_xp(valor) 

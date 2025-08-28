@@ -1,17 +1,16 @@
 extends Marker2D
 
-# Configurações do spawner
 @export var enemy_scenes: Array[PackedScene] = []
 @export var max_enemies := 900
 @export var min_delay = 3
 @export var max_delay = 4.5
 var spawn_delay: float = randf_range(max_delay, min_delay) + min_delay
 @export var spawn_radius: float = 50.0
+var default_enemies = []
 
 var bar_red = preload("res://Assets/Vida_bar/healthbar4.png")
 var bar_blue = preload("res://Assets/Vida_bar/healthbar1.png")
 var bar_yellow = preload("res://Assets/Vida_bar/healthbar2.png")
-
 var _timer := 0.0
 
 func _ready():
@@ -21,27 +20,30 @@ func _ready():
 func _process(delta):
 	if enemy_scenes.is_empty():
 		return
-	
 	_timer += delta
 	if _timer >= spawn_delay and get_child_count() < max_enemies:
 		_timer = 0.0
 		spawn_random_enemy()
 
-func load_default_enemies():
-	var default_enemies = [
-		"res://Cenas/inimigo.tscn",
-		"res://Cenas/inimigo2.tscn",
-		"res://Cenas/inimigo3.tscn"
-	]
-	
+
+func load_path():
 	for path in default_enemies:
 		var enemy = load(path)
 		if enemy:
 			enemy_scenes.append(enemy)
-
+	
+func load_default_enemies():
+	enemy_scenes.clear() 
+	default_enemies = [
+		"res://Cenas/inimigo.tscn"
+	]
+	load_path()
+	
 func spawn_random_enemy():
 	var selected_scene = enemy_scenes[randi() % enemy_scenes.size()]
+	
 	var new_enemy = selected_scene.instantiate()
+	
 	var main_node = get_tree().root.get_node("Mundo")  
 	main_node.add_child(new_enemy)
 	var spawn_pos = global_position
@@ -78,3 +80,26 @@ func _on_enemy_health_changed(new_health, healthbar):
 		healthbar.texture_progress = bar_yellow
 	else:
 		healthbar.texture_progress = bar_blue
+
+func _on_dificulty_timer_timeout() -> void:
+	print(min_delay)
+	load_path()
+	min_delay -= 0.25
+	if min_delay <= 1.3:
+		default_enemies = [
+			"res://Cenas/inimigo3.tscn"
+		]
+	elif min_delay <= 1.5:
+		default_enemies = [
+			"res://Cenas/inimigo2.tscn",
+			"res://Cenas/inimigo3.tscn"
+		]
+	elif min_delay <= 2.0:
+		default_enemies = [
+			"res://Cenas/inimigo2.tscn"
+		]
+	elif min_delay <= 2.5:
+		default_enemies = [
+			"res://Cenas/inimigo.tscn",
+			"res://Cenas/inimigo2.tscn"
+		]
